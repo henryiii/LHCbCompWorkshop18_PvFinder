@@ -1,0 +1,52 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+
+\usepackage{lhcb_presentation/package}
+
+\usepackage{units}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{ulem}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{tikz}
+\definecolor{brickred}{rgb}{0.85, 0, 0.05}
+\errorcontextlines 10000
+
+\title[PV finding with CNNs: LHCb Computing Workshop 2018]{PV finding with CNNs\\{\small LHCb Computing Workshop 2018}}
+
+\author[Fang, Schreiner, Sokoloff]{Rui Fang \and Henry Schreiner \and Mike Sokoloff}
+\institute{The University of Cincinnati}
+\date{September 26, 2018}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Introduction}
+\input{parts/introduction.tex}
+
+\section{Design}
+\input{parts/design.tex}
+
+\section{Results}
+\input{parts/results.tex}
+
+\section{Future Plans}
+\input{parts/conclusion.tex}
+
+\backupbegin
+\section{Backup}
+\input{parts/backup.tex}
+\backupend
+
+
+\end{document}

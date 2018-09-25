@@ -17,12 +17,12 @@
     \column{.5\textwidth}
     \begin{block}{Machine learning}
     \begin{itemize}
-        \item Sparse 3D data $\to$ rich 1D dataset
+        \item Sparse 3D data (41M pixels) $\to$ rich 1D dataset
         \item 1D convolutional neural net
         \item Great opportunities to visualize learning process
     \end{itemize}
     \end{block}
-    
+
     \begin{block}{Computation}
     \begin{itemize}
         \item Highly parallelizable
@@ -56,7 +56,7 @@
     \includegraphics[width=\textwidth, trim=18 0 18 0]{images/LHCbDet.png}
   \end{center}
   \end{columns}
-  
+
   \vspace{1em}
   \begin{center}
     \textbf{We need to rethink our algorithms from the ground up...}
@@ -109,31 +109,6 @@ What follows is a proof of principle implementation for finding PVs.
 \end{center}
 \end{frame}
 
-\subsection{The VELO}
-\begin{frame}{The VELO}
-  \begin{columns}[c]
-    \column{.6\textwidth}
-    \begin{block}{Tracks}
-      \begin{itemize}
-          \item Originate from vertices (not shown)
-          \item Hits originate from tracks
-          \item We only know the true track in simulation
-          \item Nearly straight, but tracks may scatter in material
-      \end{itemize}
-    \end{block}
-    \begin{block}{The VELO}
-      \begin{itemize}
-          \item A set of 26 planes that detect tracks
-          \item Tracks should hit one or more pixels per plane
-          \item Sparse 3D dataset (41M pixels)
-      \end{itemize}
-    \end{block}
-    \column{.4\textwidth}
-    \centering
-    \includegraphics[width=\textwidth, trim=200 0 100 0]{images/Intersections.png}
-  \end{columns}
-\end{frame}
-
 \subsection{Vertices and Tracks}
 \begin{frame}{Vertices and Tracks}
 \begin{columns}[c]
@@ -157,27 +132,27 @@ What follows is a proof of principle implementation for finding PVs.
         PV/.style={red, circle, fill, inner sep=1pt},
         SV/.style={blue, circle, fill, inner sep=1pt},
         track/.style={green!70!black, thick}]
-        
+
         \clip [use as bounding box] (-3,-2) rectangle (3,2);
         \clip (-3,-2) rectangle (3,2);
-        
-        \node [blue!80!white, rotate=-5] at (-2, .7) {Beams}; 
+
+        \node [blue!80!white, rotate=-5] at (-2, .7) {Beams};
         \draw [beam] (-3,.3) -- (3,-.3);
         \draw [beam] (-3,-.3) -- (3,.3);
-        
+
         \node [PV] (A) at (1.2, -.05) {};
         \node [PV] (B) at (-.8, .15) {};
         \node [red, above] at (B) {PV};
-        
+
         \draw [track] (A) -- (3,1.3);
         \draw [track] (A) -- (3,1);
         \draw [track] (A) -- (3,.5);
-        
+
         \draw [track] (B) -- (3,1.4) node [midway, above, rotate=17] {Track};
         \draw [track] (B) -- (3,.6);
         \draw [track] (B) -- (3,-.5);
         \draw [track, dashed] (B) -- (1,-.5);
-        
+
         \node [SV] (C) at (1,-.5) {};
         \node [blue, below] at (C) {SV};
         \draw [track] (C) -- (3, -.3);
@@ -185,7 +160,7 @@ What follows is a proof of principle implementation for finding PVs.
         \draw [track] (C) -- (3, -1.1);
     \end{tikzpicture}
   \end{columns}
-  
+
   \begin{block}{}
   \begin{itemize}
       \item We are developing a way to find PVs and SVs using hit triplets

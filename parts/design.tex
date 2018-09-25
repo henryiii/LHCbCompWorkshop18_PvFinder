@@ -30,14 +30,14 @@
             \item \textcolor{brickred}{Note: triplet is stored}
         \end{itemize}
         \end{block}
-        
+
         \begin{block}{Kernel}
         \begin{itemize}
             \item Fill in each voxel center with gaussian PDF
             \item PDF is combined for each prototrack
         \end{itemize}
         \end{block}
-        
+
     }
     \only<6>{%
         \begin{block}{Kernel}
@@ -46,7 +46,7 @@
             \item Stores $z$ histogram with maximum PDF values
         \end{itemize}
         \end{block}
-        
+
         \begin{block}{Details}
         \begin{itemize} \color{brickred}
             \item $x$-$y$ grid initially very coarse
@@ -54,7 +54,7 @@
         \end{itemize}
         \end{block}
     }
-    
+
     \column{.46\textwidth}
     \begin{tikzpicture}
         [hit/.style={inner sep=2pt, fill, circle, black!80!red},
@@ -66,14 +66,14 @@
                 preaction={draw, blue, line width=.3cm, opacity=.2},
                 preaction={draw, blue, line width=.5cm, opacity=.2}}}
         ]
-        
+
         \node at (2,-3) [below] {$z$ axis (along the beam)};
         \node at (-1, 0) [left] {$x$};
-        
+
         \clip (-1,-3) rectangle (5,3);
-        
+
         \begin{scope}[xscale=.65, xshift=-.6cm]
-        
+
         % def f(name, slope, factor):
         %     v = np.arange(1,9)
         %     vv = (v-.5)*slope + .05*np.sin(v*factor)
@@ -85,7 +85,7 @@
         %     print()
         %     return q, qq, v, vv
 
-        
+
         % (v-.5)*slope + .05*np.sin(v*factor)
         % A slope=0.4 factor=-5
         \coordinate (A1) at (1, 0.248);
@@ -95,7 +95,7 @@
         \coordinate (A5) at (5, 1.81);
         \coordinate (A6) at (6, 2.25);
         \coordinate (A7) at (7, 2.62);
-        
+
         % B slope=0.06 factor=6
         \coordinate (B1) at (1, 0.016);
         \coordinate (B2) at (2, 0.0632);
@@ -105,7 +105,7 @@
         \coordinate (B6) at (6, 0.28);
         \coordinate (B7) at (7, 0.344);
         \coordinate (B8) at (8, 0.412);
-        
+
         % C slope=-0.35 factor=7
         \coordinate (C1) at (1, -0.142);
         \coordinate (C2) at (2, -0.475);
@@ -114,38 +114,38 @@
         \coordinate (C5) at (5, -1.6);
         \coordinate (C6) at (6, -1.97);
         \coordinate (C7) at (7, -2.32);
-        
+
         \only<1>{%
         \foreach \x in {0,...,9}{%
             \draw [ultra thick, yellow!80!black] (\x, -3) -- (\x,3);
         }
         }
         \end{scope}
-        
+
         \only<2->{%
         \draw[step=.5, gray, very thin, use as bounding box] (-1,-3) grid (5,3);
         }
-        
+
         \only<3>{%
             \draw [bluesimitrack] (A5) -- (A7) ;
         } \only<4->{%
             \draw [simitrack] (A5) -- (A7) ;
         }
-        
+
         \only<4>{%
             \draw [bluesimitrack] (B6) -- (B8) ;
         } \only<5->{%
             \draw [simitrack] (B6) -- (B8) ;
         }
-        
+
         \only<5>{%
             \draw [bluesimitrack] (C5) -- (C7) ;
         } \only<6->{%
             \draw [simitrack] (C5) -- (C7) ;
         }
-        
+
         \draw [fill,green!60!black] (0,0) circle (.065) node [left] {PV};
-        
+
         \only<0-2>{%
         \node [hit] at (A1) {};
         \node [hit] at (A2) {};
@@ -157,7 +157,7 @@
         \node [hit, red] at (A3) {};
         \node [hit, red] at (A4) {};
         }
-        
+
         \only<0-2>{%
         \node [hit] at (A5) {};
         \node [hit] at (A6) {};
@@ -171,7 +171,7 @@
         \node [hit, red] at (A6) {};
         \node [hit, red] at (A7) {};
         }
-        
+
         \only<0-3>{%
         \node [hit] at (B1) {};
         \node [hit] at (B2) {};
@@ -187,7 +187,7 @@
         \node [hit, red] at (B5) {};
         \node [hit, red] at (C1) {};
         }
-        
+
         \only<0-3>{%
         \node [hit] at (B6) {};
         \node [hit] at (B7) {};
@@ -201,7 +201,7 @@
         \node [hit, red] at (B7) {};
         \node [hit, red] at (B8) {};
         }
-        
+
         \only<0-4>{%
         \node [hit] at (C2) {};
         \node [hit] at (C3) {};
@@ -211,7 +211,7 @@
         \node [hit, red] at (C3) {};
         \node [hit, red] at (C4) {};
         }
-        
+
         \only<0-4>{%
         \node [hit] at (C5) {};
         \node [hit] at (C6) {};
@@ -225,7 +225,7 @@
         \node [hit, red] at (C6) {};
         \node [hit, red] at (C7) {};
         }
-        
+
     \end{tikzpicture}
 
     \end{columns}
@@ -245,7 +245,7 @@
         \item Peaks generally correspond to PVs and SVs
     \end{itemize}
     \end{block}
-    
+
     \column{.45\textwidth}
     \begin{block}{Challenges}
     \begin{itemize}
@@ -265,26 +265,26 @@
     \column{.5\textwidth}
     \begin{block}{Build target distribution}
       \begin{itemize}
-          \item real PV position as the mean of Gaussian distribution 
+          \item real PV position as the mean of Gaussian distribution
           \item $\sigma $(standard deviation) is 100 $\mu$m
           \item calculate the cdf of each bin around of the mean, within $\pm$ 3 bins ($\pm$ 300 $\mu$m )
       \end{itemize}
     \end{block}
     \begin{center}
             \includegraphics[width=1\textwidth,height=0.45\textwidth,trim=18 0 18 0]{images/T_1_12.png}
-            
+
         \end{center}
     \column{.5\textwidth}
       \begin{center}
     \includegraphics[width=1\textwidth,height=0.45\textwidth, trim=18 0 18 0]{images/T_2_12.png}
-    
+
     \includegraphics[width=1\textwidth,height=0.45\textwidth, trim=18 0 18 0]{images/T_2_25.png}
   \end{center}
   \end{columns}
 \end{frame}
 % Part 5: RUI
-\subsection{Neural network architecture with two convolutional layers}
-\begin{frame}{Neural network architecture}
+\subsection{Neural network architecture}
+\begin{frame}{Neural network architecture with two convolutional layers}
     \begin{center}
       \includegraphics[width=0.75\linewidth, trim=0 30 0 0]{images/CNN_2.png}
    \end{center}
@@ -299,14 +299,14 @@
         \column{.5\textwidth}
         \begin{center}
             \includegraphics[width=0.8\textwidth]{images/LeakyRelu.png}
-            
+
             Activation function for hidden layers
         \end{center}
-    
+
         \column{.5\textwidth}
         \begin{center}
             \includegraphics[width=0.8\textwidth]{images/Sigmoid.png}
-            
+
             Activation function for output layer
         \end{center}
   \end{columns}
@@ -316,11 +316,11 @@
 % Part 4: MDS
 \subsection{Cost Function}
 \begin{frame}{Cost Function}
-  \begin{columns}[c] 
+  \begin{columns}[c]
     \column{0.45\textwidth}
     \begin{block}{Approach}
       \begin{itemize}
-         \item 
+         \item
            Cost function should be similar to Cross-Entropy for $ y \to 0 $,
            $ y \to 1 $;
              $ \color{brickred} \textrm{cost} = - \big (y \ln \hat{y} + (1-y) \ln (1 - \hat{y}) \big )  $

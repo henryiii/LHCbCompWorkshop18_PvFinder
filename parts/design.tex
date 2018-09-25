@@ -3,7 +3,7 @@
 \begin{frame}{Kernel Generation}
   \begin{columns}[c]
     \column{.54\textwidth}
-    \only<1>{
+    \only<1>{%
         \begin{block}{Hits}
         \begin{itemize}
             \item Hits lie on the 26 planes
@@ -13,7 +13,7 @@
         \end{itemize}
         \end{block}
     }
-    \only<2>{
+    \only<2>{%
         \begin{block}{Grid}
         \begin{itemize}
             \item Make a 3D grid of voxels (2D shown)
@@ -21,12 +21,12 @@
         \end{itemize}
         \end{block}
     }
-    \only<3-5>{
+    \only<3-5>{%
         \begin{block}{Prototrack}
         \begin{itemize}
             \item Start with maximum $r$
             \item Find triplet with $\chi^2<10$
-            \item Mark ``used`` all other hits within $\chi^2<9$
+            \item Mark ``used'' all other hits within $\chi^2<9$
             \item \textcolor{brickred}{Note: triplet is stored}
         \end{itemize}
         \end{block}
@@ -39,7 +39,7 @@
         \end{block}
         
     }
-    \only<6>{
+    \only<6>{%
         \begin{block}{Kernel}
         \begin{itemize}
             \item Highest PDF density at vertices
@@ -115,71 +115,71 @@
         \coordinate (C6) at (6, -1.97);
         \coordinate (C7) at (7, -2.32);
         
-        \only<1>{
-        \foreach \x in {0,...,9}{
+        \only<1>{%
+        \foreach \x in {0,...,9}{%
             \draw [ultra thick, yellow!80!black] (\x, -3) -- (\x,3);
         }
         }
         \end{scope}
         
-        \only<2->{
+        \only<2->{%
         \draw[step=.5, gray, very thin, use as bounding box] (-1,-3) grid (5,3);
         }
         
-        \only<3>{
+        \only<3>{%
             \draw [bluesimitrack] (A5) -- (A7) ;
-        } \only<4->{
+        } \only<4->{%
             \draw [simitrack] (A5) -- (A7) ;
         }
         
-        \only<4>{
+        \only<4>{%
             \draw [bluesimitrack] (B6) -- (B8) ;
-        } \only<5->{
+        } \only<5->{%
             \draw [simitrack] (B6) -- (B8) ;
         }
         
-        \only<5>{
+        \only<5>{%
             \draw [bluesimitrack] (C5) -- (C7) ;
-        } \only<6->{
+        } \only<6->{%
             \draw [simitrack] (C5) -- (C7) ;
         }
         
         \draw [fill,green!60!black] (0,0) circle (.065) node [left] {PV};
         
-        \only<0-2>{
+        \only<0-2>{%
         \node [hit] at (A1) {};
         \node [hit] at (A2) {};
         \node [hit] at (A3) {};
         \node [hit] at (A4) {};
-        }\only<3->{
+        }\only<3->{%
         \node [hit, red] at (A1) {};
         \node [hit, red] at (A2) {};
         \node [hit, red] at (A3) {};
         \node [hit, red] at (A4) {};
         }
         
-        \only<0-2>{
+        \only<0-2>{%
         \node [hit] at (A5) {};
         \node [hit] at (A6) {};
         \node [hit] at (A7) {};
-        } \only<3>{
+        } \only<3>{%
         \node [hit, blue] at (A5) {};
         \node [hit, blue] at (A6) {};
         \node [hit, blue] at (A7) {};
-        } \only<4->{
+        } \only<4->{%
         \node [hit, red] at (A5) {};
         \node [hit, red] at (A6) {};
         \node [hit, red] at (A7) {};
         }
         
-        \only<0-3>{
+        \only<0-3>{%
         \node [hit] at (B1) {};
         \node [hit] at (B2) {};
         \node [hit] at (B3) {};
         \node [hit] at (B4) {};
         \node [hit] at (B5) {};
         \node [hit] at (C1) {};
-        } \only<4->{
+        } \only<4->{%
         \node [hit, red] at (B1) {};
         \node [hit, red] at (B2) {};
         \node [hit, red] at (B3) {};
@@ -188,39 +188,39 @@
         \node [hit, red] at (C1) {};
         }
         
-        \only<0-3>{
+        \only<0-3>{%
         \node [hit] at (B6) {};
         \node [hit] at (B7) {};
         \node [hit] at (B8) {};
-        } \only<4>{
+        } \only<4>{%
         \node [hit, blue] at (B6) {};
         \node [hit, blue] at (B7) {};
         \node [hit, blue] at (B8) {};
-        }\only<5->{
+        }\only<5->{%
         \node [hit, red] at (B6) {};
         \node [hit, red] at (B7) {};
         \node [hit, red] at (B8) {};
         }
         
-        \only<0-4>{
+        \only<0-4>{%
         \node [hit] at (C2) {};
         \node [hit] at (C3) {};
         \node [hit] at (C4) {};
-        } \only<5->{
+        } \only<5->{%
         \node [hit, red] at (C2) {};
         \node [hit, red] at (C3) {};
         \node [hit, red] at (C4) {};
         }
         
-        \only<0-4>{
+        \only<0-4>{%
         \node [hit] at (C5) {};
         \node [hit] at (C6) {};
         \node [hit] at (C7) {};
-        } \only<5>{
+        } \only<5>{%
         \node [hit, blue] at (C5) {};
         \node [hit, blue] at (C6) {};
         \node [hit, blue] at (C7) {};
-        } \only<6->{
+        } \only<6->{%
         \node [hit, red] at (C5) {};
         \node [hit, red] at (C6) {};
         \node [hit, red] at (C7) {};
@@ -236,11 +236,11 @@
 \subsection{Example of z KDE histogram}
 \begin{frame}{Example of z KDE histogram}
 \begin{center}
-    \includegraphics[width=\textwidth, trim=100 30 100 100]{images/kernel_and_pvs.pdf}
+    \includegraphics[width=\textwidth, trim=50 30 50 30]{images/kernel_and_pvs.pdf}
 \end{center}
 \begin{columns}[t]
     \column{.55\textwidth}
-    \begin{block}{Human Learning}
+    \begin{block}{Human learning}
     \begin{itemize}
         \item Peaks generally correspond to PVs and SVs
     \end{itemize}
@@ -263,7 +263,7 @@
 \begin{frame}{Target distribution}
 \begin{columns}[c]
     \column{.5\textwidth}
-    \begin{block}{Build Target distribution}
+    \begin{block}{Build target distribution}
       \begin{itemize}
           \item real PV position as the mean of Gaussian distribution 
           \item $\sigma $(standard deviation) is 100 $\mu$m
@@ -336,7 +336,7 @@
       \vspace{-.9em}
       \begin{equation}
         \color{brickred}
-        z_i \equiv \frac{ 2 \, r_i }{r_i + 1/r_i}
+        z_i \equiv \frac{2 \, r_i }{r_i + 1/r_i}
       \end{equation}
       \vspace{-.4em}
       \begin{equation}

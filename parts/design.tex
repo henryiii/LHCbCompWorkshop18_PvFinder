@@ -256,6 +256,7 @@
 \end{columns}
 \end{frame}
 
+
 % Zoom in
 
 % rui add a target histogram
@@ -282,6 +283,31 @@
   \end{center}
   \end{columns}
 \end{frame}
+
+
+\subsection{Preliminary study}
+\begin{frame}{Preliminary study}
+\begin{columns}[c]
+    \column{.5\textwidth}
+    \begin{block}{Preliminary study}
+      \begin{itemize}
+          \item 2, 3, and 4 convolutional layers
+          \item Symmetric cost function to be described
+          \item Discovered ``low multiplicity'' PVs are counted as false positives
+      \end{itemize}
+    \end{block}
+    \column{.5\textwidth}
+    \begin{block}{Current work}
+      \begin{itemize}
+          \item Add masking to not count discovered ``low multiplicity'' as false positives
+          \item Asymmetric cost function to control trade-offs between efficiency  and false positive rates
+      \end{itemize}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+
+
 % Part 5: RUI
 \subsection{Neural network architecture}
 \begin{frame}{Neural network architecture with two convolutional layers}

@@ -15,7 +15,7 @@
 \end{frame}
 \subsection{Prediction plots}
 
-\begin{frame}{Compare Predictions with Targets (3 convolutional layers)}
+\begin{frame}{Compare predictions with targets (3 convolutional layers)}
   \begin{columns}[c]
     \column{.5\textwidth}
         \begin{center}
@@ -34,7 +34,7 @@
 \end{frame}
 
 
-\begin{frame}{Compare Predictions with Targets (3 convolutional layers)}
+\begin{frame}{Compare predictions with targets (3 convolutional layers)}
   \begin{columns}[c]
     \column{.5\textwidth}
         \begin{center}
@@ -57,8 +57,8 @@
 
 
 % Part 7: RUI
-\subsection{Quantitative Results }
-\begin{frame}{Efficiencies and False Positive Rates}
+\subsection{Quantitative results}
+\begin{frame}{Efficiencies and false positive rates}
 \begin{table}[]
 \centering
 \begin{tabular}{cccc}
@@ -103,9 +103,19 @@ $ \textrm{False Positive rate}
   \end{block}
 \end{frame}
 
+\subsection{Asymmetric loss}
+\begin{frame}{Asymmetric loss}
+    \centerline{
+        \begin{minipage}[t]{1.1\textwidth}
+            \includegraphics[width=.33\textwidth, clip, trim=10 0 40 0]{images/AltCostPlot_181015} 
+            \includegraphics[width=.33\textwidth, clip, trim=10 0 40 0]{images/AltCostPlot_181015_linear} 
+            \includegraphics[width=.33\textwidth, clip, trim=10 0 40 0]{images/AltCostPlot_181015_linearA} 
+        \end{minipage}
+    }
+\end{frame}
 
-
-\begin{frame}{Efficiencies and False Positive Rates, cont.}
+\subsection {New quantitative results}
+\begin{frame}{Efficiencies and false positive rates, cont.}
 \begin{table}[]
 \centering
     {\Large With masking} \\

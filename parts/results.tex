@@ -20,14 +20,14 @@
     \column{.5\textwidth}
         \begin{center}
             \includegraphics[width=1\textwidth,height=0.45\textwidth, trim=18 0 18 0]{images/120000_3layer_00.pdf}
-    
+
             \includegraphics[width=1\textwidth, height=0.45\textwidth,trim=18 0 18 0]{images/120000_3layer_01.pdf}
 
         \end{center}
     \column{.5\textwidth}
         \begin{center}
            \includegraphics[width=1\textwidth, height=0.45\textwidth, trim=18 0 18 0]{images/120000_3layer_02.pdf}
-    
+
            \includegraphics[width=1\textwidth, height=0.45\textwidth, trim=18 0 18 0]{images/120000_3layer_03.pdf}
        \end{center}
   \end{columns}
@@ -39,14 +39,14 @@
     \column{.5\textwidth}
         \begin{center}
             \includegraphics[width=1\textwidth,height=0.45\textwidth, trim=18 0 18 0]{images/120000_3layer_12.pdf}
-    
+
             \includegraphics[width=1\textwidth, height=0.45\textwidth,trim=18 0 18 0]{images/120000_3layer_13.pdf}
 
         \end{center}
     \column{.5\textwidth}
         \begin{center}
            \includegraphics[width=1\textwidth, height=0.45\textwidth, trim=18 0 18 0]{images/120000_3layer_14.pdf}
-    
+
            \includegraphics[width=1\textwidth, height=0.45\textwidth, trim=18 0 18 0]{images/120000_3layer_15.pdf}
        \end{center}
   \end{columns}
@@ -87,7 +87,7 @@ $ \textrm{False Positive rate}
     \begin{itemize}
     	\item search $ \pm 5 $ bins ($ \pm 500 \mu $m) around a real PV
     	\item at least 3 (4) bins with predicted probability
-    	   $ > 1\% $ and 
+    	   $ > 1\% $ and
     	   integrated probability $ > 20\%$.
     \end{itemize}
 
@@ -97,7 +97,7 @@ $ \textrm{False Positive rate}
         \item
            at least 3 (4) bins with individual probabilities $ > 1\% $ and
           integrated probability $ > 20\%$.
-        \item 
+        \item
         no real PV within $ \pm 5 $ bins ($ \pm 500 \mu $m) of that cluster.
     \end{itemize}
   \end{block}
@@ -107,9 +107,9 @@ $ \textrm{False Positive rate}
 \begin{frame}{Asymmetric loss}
     \centerline{
         \begin{minipage}[t]{1.1\textwidth}
-            \includegraphics[width=.33\textwidth, clip, trim=10 0 40 0]{images/AltCostPlot_181015} 
-            \includegraphics[width=.33\textwidth, clip, trim=10 0 40 0]{images/AltCostPlot_181015_linear} 
-            \includegraphics[width=.33\textwidth, clip, trim=10 0 40 0]{images/AltCostPlot_181015_linearA} 
+            \includegraphics[width=.33\textwidth, clip, trim=10 0 40 0]{images/AltCostPlot_181015}
+            \includegraphics[width=.33\textwidth, clip, trim=10 0 40 0]{images/AltCostPlot_181015_linear}
+            \includegraphics[width=.33\textwidth, clip, trim=10 0 40 0]{images/AltCostPlot_181015_linearA}
         \end{minipage}
     }
 \end{frame}
@@ -120,11 +120,13 @@ $ \textrm{False Positive rate}
 \centering
     {\Large With masking} \\
     \vspace{.5em}
-\begin{tabular}{cccc}
-    parameter & 3 CVN Layers & 4 CVN Layers & 4 CVN Layers \\
-              &              &              & (asymmetric loss) \\ [0.3em]
-    $ \epsilon \textrm{(Efficiency)} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}} $ &  $ \approx 80\% $  & $ \approx 82\% $ & $ \approx 92\% $ \\ [0.7em]
-    $ \textrm{False Positive rate} = \frac{\mbox{FP}}{\mbox{number of events}} $ &  $\approx 0.03  $  & $\approx 0.03  $ & $ \approx 0.18 $ \\
+\begin{tabular}{ccccc}
+    Layers (Conv. + FC Linear) & 3 + 1 & 4 + 1 & 4 + 1  & 5 + 0\\[.3em]
+    Sym or asym loss      & Sym          & Sym             & Asym & Asym     \\ [0.9em]
+    $ \epsilon \textrm{(Efficiency)} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}} $ &  $ \approx 80\% $  & $ \approx 82\% $ & $ \approx 92\% $ & $ \approx 93.6\% $ \\ [0.9em]
+    $ \textrm{FP rate} = \frac{\mbox{FP}}{\mbox{number of events}} $ &  $\approx 0.03  $  & $\approx 0.03  $ & $ \approx 0.18 $ & $ \approx 0.22\ (4\%) $ \\
  \end{tabular}
 \end{table}
+
+Note: For 10+ long tracks, the efficiency is around 97\%-98\% for the larger networks.
 \end{frame}

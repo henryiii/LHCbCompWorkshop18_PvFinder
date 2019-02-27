@@ -1,0 +1,44 @@
+\begin{frame}{A hybrid ML approach}
+\begin{center}
+Prototracking $\rightarrow$ Kernel generation $\rightarrow$ CNN to find PVs $\rightarrow$ Informed tracking
+\end{center}
+
+\begin{columns}[b]
+    \column{.28\textwidth}
+    \begin{block}{Prototracking}
+    \begin{itemize}
+        \item Ultra-simple/fast
+        \item Triplets only
+        \item Used for kernel only
+        \end{itemize}
+    \end{block}
+    \column{.30\textwidth}
+    \begin{block}{Vertexing}
+    \begin{itemize}
+        \item High efficiency
+        \item Low false positive rate
+        \item Useful for other reasons
+        \end{itemize}
+    \end{block}
+    \column{.28\textwidth}
+    \begin{block}{Tracking}
+    \begin{itemize}
+        \item Faster (effect TBD)
+        \item Uses search windows
+        \item Higher efficiency
+    \end{itemize}
+    \end{block}
+\end{columns}
+    \begin{block}{Machine learning features (so far)}
+        \begin{itemize}
+            \item Prototracking converts sparse 3D dataset to feature-rich 1D dataset
+            \item Easy and effective visualization due to 1D nature
+            \item Can see results with simple unoptimized 2-layer CNN + 1-layer linear
+        \end{itemize}
+    \end{block}
+
+\vspace{.3em}
+\begin{center}
+What follows is a proof of principle implementation for finding PVs.
+\end{center}
+\end{frame}

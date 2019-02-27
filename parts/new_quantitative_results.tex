@@ -1,0 +1,15 @@
+\begin{frame}{Efficiencies and false positive rates, cont.}
+\begin{table}[]
+\centering
+    {\Large With masking} \\
+    \vspace{.5em}
+\begin{tabular}{ccccc}
+    Layers (Conv. + FC Linear) & 3 + 1 & 4 + 1 & 4 + 1  & 5 + 0\\[.3em]
+    Sym or asym loss      & Sym          & Sym             & Asym & Asym     \\ [0.9em]
+    $ \epsilon \textrm{(Efficiency)} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}} $ &  $ \approx 80\% $  & $ \approx 82\% $ & $ \approx 92\% $ & $ \approx 93.6\% $ \\ [0.9em]
+    $ \textrm{FP rate} = \frac{\mbox{FP}}{\mbox{number of events}} $ &  $\approx 0.03  $  & $\approx 0.03  $ & $ \approx 0.18 $ & $ \approx 0.22\ (4\%) $ \\
+ \end{tabular}
+\end{table}
+
+Note: For 10+ long tracks, the efficiency is around 97\%-98\% for the larger networks.
+\end{frame}

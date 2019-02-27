@@ -1,0 +1,31 @@
+\begin{frame}{Objectives}
+\begin{columns}[c]
+    \column{.5\textwidth}
+    \begin{block}{Physics}
+    \begin{itemize}
+        \item Iterative tracking and vertexing may allow high efficiency, high speed, highly parallel algorithms:
+        \begin{itemize}
+            \item \textbf{Use proto-tracks to find primary vertex (PV) candidates}
+            \item Use PV candidates to augment more complete tracking
+            \item Find more PVs plus secondary vertices
+        \end{itemize}
+        \item PVs available quickly
+    \end{itemize}
+    \end{block}
+    \column{.5\textwidth}
+    \begin{block}{Machine learning}
+    \begin{itemize}
+        \item Sparse 3D data (41M pixels) $\to$ rich 1D dataset
+        \item 1D convolutional neural net
+        \item Great opportunities to visualize learning process
+    \end{itemize}
+    \end{block}
+
+    \begin{block}{Computation}
+    \begin{itemize}
+        \item Highly parallelizable
+        \item Well suited to GPUs
+    \end{itemize}
+    \end{block}
+\end{columns}
+\end{frame}

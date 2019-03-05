@@ -1,6 +1,16 @@
 \begin{frame}{Objectives}
-\begin{columns}[c]
+
+    \begin{columns}[c]
+      \column{.5\textwidth}
+      \includegraphics[width=\textwidth, trim=0 0 0 0]{images/LHCbDet.png}
+      \begin{block}{Motivation: LHCb upgrade}
+        \begin{itemize}
+            \item 30 MHz software trigger
+            \item 7.6 PVs per event (Poisson distribution)
+        \end{itemize}
+      \end{block}
     \column{.5\textwidth}
+
     \begin{block}{Physics}
     \begin{itemize}
         \item Traditional vertexing can be a bottleneck to highly parallel tracking
@@ -8,20 +18,15 @@
         \item Control mistag rate vs. effeciency
     \end{itemize}
     \end{block}
-    \column{.5\textwidth}
+
     \begin{block}{Machine learning}
     \begin{itemize}
-        \item Sparse 3D data (41M pixels) $\to$ rich 1D dataset
+        \item Sparse 3D data (41M pixels) $\to$ rich 1D data
         \item 1D convolutional neural net
-        \item Great opportunities to visualize learning process
+        \item Highly parallelizable, GPU friendly
+        \item Opportunity to visualize learning process
     \end{itemize}
     \end{block}
 
-    \begin{block}{Computation}
-    \begin{itemize}
-        \item Highly parallelizable
-        \item Well suited to GPUs
-    \end{itemize}
-    \end{block}
 \end{columns}
 \end{frame}

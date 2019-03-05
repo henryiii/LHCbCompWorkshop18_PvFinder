@@ -23,6 +23,8 @@
     		\draw [track] (.4, -.6) -- (.7,-1);
     		\path [topbox]  (-1.5,.45) rectangle (1.5,1);
     	    \node at (0,1) [texttop] {Tracking};
+            \path [fill=lhcbRed] (0, -.275) circle (.05);
+            \path [fill=green!70!black] (.4, -.6) circle (.05);
     	\end{scope}
 
     	\begin{scope}[xshift=4cm]
@@ -78,12 +80,12 @@
 
     	\begin{scope}[xshift=0cm, yshift=-2.5cm]
     	    \path [belowbox] (-1.5,-1) rectangle (1.5,.45);
-    		\path [fill=lhcbBlue] plot [smooth] coordinates {
+    		\path [fill=lhcbRed] plot [smooth] coordinates {
     		(-.15,-1)
     		(0, 0)
     		(.15,-1)
     		};
-    		\path [fill=lhcbBlue] plot [smooth] coordinates {
+    		\path [fill=green!70!black] plot [smooth] coordinates {
     		(.25,-1)
     		(.4, 0)
     		(.55,-1)
@@ -96,7 +98,6 @@
     	\draw [conn] (5.5,0) -- (6.5,0);
     	\draw [conn] (9.5,0) -- (10.5,0);
     	\draw [conn] (1.5, -2.5) -- (7, -1.1) node [above=-2.5, midway, rotate=13] {Training};
-
     	\draw [conn] (1.5, -3) -- (11, -1.1) node [above=-1, midway, rotate=11] {Validation};
 \end{tikzpicture}
 

@@ -16,21 +16,21 @@
 
     \column{.5\textwidth}
     \begin{tikzpicture}
-        [beam/.style={line width = 15, opacity=.1, blue, shorten >= -.2cm, shorten <= -.2cm},
-        PV/.style={red, circle, fill, inner sep=1pt},
-        SV/.style={blue, circle, fill, inner sep=1pt},
-        track/.style={green!70!black, thick}]
+        [beam/.style={line width = 15, opacity=.1, lhcbBlue, shorten >= -.2cm, shorten <= -.2cm},
+        PV/.style={lhcbRed, circle, fill, inner sep=1pt},
+        SV/.style={green!70!black, circle, fill, inner sep=1pt},
+        track/.style={lhcbBlue!50!black, thick}]
 
         \clip [use as bounding box] (-3,-2) rectangle (3,2);
         \clip (-3,-2) rectangle (3,2);
 
-        \node [blue!80!white, rotate=-5] at (-2, .7) {Beams};
+        \node [lhcbBlue!80!white, rotate=-5] at (-2, .7) {Beams};
         \draw [beam] (-3,.3) -- (3,-.3);
         \draw [beam] (-3,-.3) -- (3,.3);
 
         \node [PV] (A) at (1.2, -.05) {};
         \node [PV] (B) at (-.8, .15) {};
-        \node [red, above] at (B) {PV};
+        \node [lhcbRed, above] at (B) {PV};
 
         \draw [track] (A) -- (3,1.3);
         \draw [track] (A) -- (3,1);
@@ -42,17 +42,20 @@
         \draw [track, dashed] (B) -- (1,-.5);
 
         \node [SV] (C) at (1,-.5) {};
-        \node [blue, below] at (C) {SV};
+        \node [green!70!black, below] at (C) {SV};
         \draw [track] (C) -- (3, -.3);
         \draw [track] (C) -- (3, .3);
         \draw [track] (C) -- (3, -1.1);
     \end{tikzpicture}
   \end{columns}
 
-  \begin{block}{}
+
+  \begin{block}{Adapt to machine learning?}
   \begin{itemize}
-      \item We are developing a way to find PVs and SVs using hit triplets
-      \item This will enable an iterative tracking algorithm
+      \item Sparse 3D data (41M pixels) $\to$ rich 1D data
+      \item 1D convolutional neural nets
+      \item Highly parallelizable, GPU friendly
+      \item Opportunities to visualize learning process
   \end{itemize}
   \end{block}
 \end{frame}

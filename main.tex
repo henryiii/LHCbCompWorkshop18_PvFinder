@@ -33,16 +33,18 @@
 }
 \date{March 11, 2019}
 
-\begin{document}
+\renewcommand{\logomax}{\node [right] at (.25,1.9) {\includegraphics[height=1.8cm]{images/acatlogo.pdf}};}
+\renewcommand{\logomini}{\node at (.5,.4) {\includegraphics[height=.75cm]{images/acatlogo.pdf}};}
 
+\begin{document}
 
 \begin{frame}
     \titlepage
     \begin{tikzpicture}[overlay]
-        \node [below] at (4.7, -1.9) {\Large\color{lhcbLightBlue} ACAT 2019};
-        \node [below] at (8.9, -1.9) {\Large\color{lhcbLightBlue} <Add SSE> };
-        \node [above] at (4.7, -1.9) {\includegraphics[width=2cm]{images/acatlogo.pdf}};
-        \node [above] at (8.9, -1.9) {\includegraphics[width=4cm]{images/iris-hep-t.png}};
+        \node [below] at (0.25, -1.9) {\color{lhcbLightBlue}ACAT 2019};
+        \node [below] at (6.9, -1.9) {\color{lhcbLightBlue} <Add SSE> };
+        %\node [above] at (4.7, -1.9) {\includegraphics[width=2cm]{images/acatlogo.pdf}};
+        \node [above] at (6.9, -1.9) {\includegraphics[width=4cm]{images/iris-hep-t.png}};
     \end{tikzpicture}
 \end{frame}
 
@@ -50,17 +52,15 @@
 
 \section{Introduction}
 
-\subsection{Objectives}
-\input{parts/objectives.tex}
-
 \subsection{Tracking in the LHCb upgrade}
 \input{parts/tracking_in_the_lhcb_upgrade.tex}
+
+\subsection{Vertices and tracks}
+\input{parts/vertices_and_tracks.tex}
 
 \subsection{A hybrid ML approach}
 \input{parts/a_hybrid_ml_approach.tex}
 
-\subsection{Vertices and tracks}
-\input{parts/vertices_and_tracks.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

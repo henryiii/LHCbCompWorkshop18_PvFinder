@@ -18,17 +18,32 @@
 \definecolor{brickred}{rgb}{0.85, 0, 0.05}
 \errorcontextlines 10000
 
-\title[PV finding with CNNs: Vertexing questions/discussion]{PV finding with CNNs\\{\small Vertexing questions/discussion}}
+\title[Hybrid DL approach to vertexing]{A hybrid deep learning approach to vertexing}
 
-\author[Fang, Schreiner, Sokoloff]{Rui Fang \and Henry Schreiner \and Mike Sokoloff}
-\institute{The University of Cincinnati}
-\date{January 16, 2018}
+\author[Fang, Schreiner, Sokoloff, Weisser, Williams]{
+   Rui Fang\textcolor{red}{\inst{1}} \and
+   Henry Schreiner\textcolor{red}{\inst{2}} \and
+   Mike Sokoloff\textcolor{red}{\inst{1}} \and
+   Constantin Weisser\textcolor{red}{\inst{3}} \and
+   J Michael Williams\textcolor{red}{\inst{3}}}
+\institute{
+    \inst{1} The University of Cincinnati \and
+    \inst{2} Princeton University \and
+    \inst{3} Massachusetts Institute of Technology
+}
+\date{March 11, 2019}
 
 \begin{document}
 
 
 \begin{frame}
-\titlepage
+    \titlepage
+    \begin{tikzpicture}[overlay]
+        \node [below] at (4.7, -1.9) {\Large\color{lhcbLightBlue} ACAT 2019};
+        \node [below] at (8.9, -1.9) {\Large\color{lhcbLightBlue} <Add SSE> };
+        \node [above] at (4.7, -1.9) {\includegraphics[width=2cm]{images/acatlogo.pdf}};
+        \node [above] at (8.9, -1.9) {\includegraphics[width=4cm]{images/iris-hep-t.png}};
+    \end{tikzpicture}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

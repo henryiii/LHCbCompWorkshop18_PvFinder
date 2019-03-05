@@ -1,41 +1,112 @@
 \begin{frame}{A hybrid ML approach}
-\begin{center}
-Prototracking $\rightarrow$ Kernel generation $\rightarrow$ CNN to find PVs $\rightarrow$ Informed tracking
-\end{center}
 
-\begin{columns}[b]
-    \column{.28\textwidth}
-    \begin{block}{Prototracking}
+\begin{tikzpicture}[
+    scale=.95,
+    belowbox/.style={fill=lhcbLightBlue},
+    topbox/.style={fill=lhcbBlue},
+    texttop/.style={below, lhcbLightBlue},
+    track/.style={thick, lhcbBlue},
+    minibox/.style={draw, thick, minimum width=.1cm, minimum height=.1cm, lhcbBlue},
+    miniarr/.style={->, thick, lhcbBlue},
+    conn/.style={-latex, ultra thick, lhcbBlue}
+    ]
+    	\begin{scope}
+    	    \path [belowbox] (-1.5,-1) rectangle (1.5,.45);
+    		\draw [track] (0,-.275) -- (-1.5,-.9);
+    		\draw [track] (0,-.275) -- (-1.5,-.6);
+    		\draw [track] (0,-.275) -- (-1.5,.2);
+    		\draw [track] (0,-.275) -- (1.5,-.3);
+    		\draw [track] (0,-.275) -- (1.5,-.6);
+    		\draw [track] (0,-.275) -- (1.5,.85);
+    		\draw [track] (0,-.275) -- (-.5,-1);
+    		\draw [track] (.4, -.6) -- (1.3,-1);
+    		\draw [track] (.4, -.6) -- (.7,-1);
+    		\path [topbox]  (-1.5,.45) rectangle (1.5,1);
+    	    \node at (0,1) [texttop] {Tracking};
+    	\end{scope}
+
+    	\begin{scope}[xshift=4cm]
+    	    \path [belowbox] (-1.5,-1) rectangle (1.5,.45);
+    		\path [fill=lhcbBlue] plot [smooth] coordinates {
+    			(-1.5,-1)
+    			(-1.1, -.98)
+    			(-.9, -.9)
+    			(-.5, -.6)
+    			(0, .2)
+    			(.2, -.2)
+    			(.4, 0)
+    			(.8, -.7)
+    			(1.1, -.9)
+    			(1.3, -.98)
+    			(1.5,-1)
+    		};
+    		\path [topbox]  (-1.5,.45) rectangle (1.5,1);
+    	    \node at (0,1) [texttop] {Kernel generation};
+    	\end{scope}
+
+    	\begin{scope}[xshift=8cm]
+    	    \path [belowbox] (-1.5,-1) rectangle (1.5,.45);
+    		\node [minibox] (mA) at (-1,-.3) {};
+    		\node [minibox] (mB) at (-.5,-.3) {};
+    		\node [minibox] (mC) at (0,-.3) {};
+    		\node [minibox] (mD) at (.5,-.3) {};
+    		\node [minibox] (mE) at (1,-.3) {};
+    		\draw [miniarr] (mA) -- (mB);
+    		\draw [miniarr] (mB) -- (mC);
+    		\draw [miniarr] (mC) -- (mD);
+    		\draw [miniarr] (mD) -- (mE);
+
+    		\path [topbox]  (-1.5,.45) rectangle (1.5,1);
+    	    \node at (0,1) [texttop] {CNN to find PVs};
+    	\end{scope}
+
+    	\begin{scope}[xshift=12cm]
+    	    \path [belowbox] (-1.5,-1) rectangle (1.5,.45);
+    		\path [fill=lhcbBlue] plot [smooth] coordinates {
+    		(-.15,-1)
+    		(0, 0)
+    		(.15,-1)
+    		};
+    		\path [fill=lhcbBlue] plot [smooth] coordinates {
+    		(.25,-1)
+    		(.4, 0)
+    		(.55,-1)
+    		};
+    		\path [topbox]  (-1.5,.45) rectangle (1.5,1);
+    	    \node at (0,1) [texttop] {Interpret results};
+    	\end{scope}
+
+    	\begin{scope}[xshift=0cm, yshift=-2.5cm]
+    	    \path [belowbox] (-1.5,-1) rectangle (1.5,.45);
+    		\path [fill=lhcbBlue] plot [smooth] coordinates {
+    		(-.15,-1)
+    		(0, 0)
+    		(.15,-1)
+    		};
+    		\path [fill=lhcbBlue] plot [smooth] coordinates {
+    		(.25,-1)
+    		(.4, 0)
+    		(.55,-1)
+    		};
+    		\path [topbox]  (-1.5,.45) rectangle (1.5,1);
+    	    \node at (0,1) [texttop] {Truth};
+    	\end{scope}
+
+    	\draw [conn] (1.5,0) -- (2.5,0);
+    	\draw [conn] (5.5,0) -- (6.5,0);
+    	\draw [conn] (9.5,0) -- (10.5,0);
+    	\draw [conn] (1.5, -2.5) -- (7, -1.1) node [above=-2.5, midway, rotate=13] {Training};
+
+    	\draw [conn] (1.5, -3) -- (11, -1.1) node [above=-1, midway, rotate=11] {Validation};
+\end{tikzpicture}
+
+\begin{block}{Machine learning features (so far)}
     \begin{itemize}
-        \item Ultra-simple/fast
-        \item Triplets only
-        \item Used for kernel only
-        \end{itemize}
-    \end{block}
-    \column{.30\textwidth}
-    \begin{block}{Vertexing}
-    \begin{itemize}
-        \item High efficiency
-        \item Low false positive rate
-        \item Useful for other reasons
-        \end{itemize}
-    \end{block}
-    \column{.28\textwidth}
-    \begin{block}{Tracking}
-    \begin{itemize}
-        \item Faster (effect TBD)
-        \item Uses search windows
-        \item Higher efficiency
+        \item Prototracking converts sparse 3D dataset to feature-rich 1D dataset
+        \item Easy and effective visualization due to 1D nature
+        \item Even simple networks can provide interesting results
     \end{itemize}
-    \end{block}
-\end{columns}
-    \begin{block}{Machine learning features (so far)}
-        \begin{itemize}
-            \item Prototracking converts sparse 3D dataset to feature-rich 1D dataset
-            \item Easy and effective visualization due to 1D nature
-            \item Can see results with simple unoptimized 2-layer CNN + 1-layer linear
-        \end{itemize}
-    \end{block}
+\end{block}
 
 \vspace{.3em}
 \begin{center}

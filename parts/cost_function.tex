@@ -1,35 +1,31 @@
 \begin{frame}{Cost function}
-  \begin{columns}[c]
-    \column{0.45\textwidth}
     \begin{block}{Approach}
       \begin{itemize}
          \item
-           Cost function should be similar to Cross-Entropy for $ y \to 0 $,
+            Should be similar to Cross-Entropy for $ y \to 0 $,
            $ y \to 1 $;
-             $ \color{brickred} \textrm{cost} = - \big (y \ln \hat{y} + (1-y) \ln (1 - \hat{y}) \big )  $
+             $ \color{brickred} \textrm{cost} = - \left (y \ln \hat{y} + (1-y) \ln (1 - \hat{y}) \right )  $
          \item
           Should be symmetric with respect to  $ r = ( \hat y/y  )$ \& $ 1/r $
      \end{itemize}
+     \vspace{-.3cm}
+
+     \[
+     r_i \equiv (\hat{y_i} + \epsilon)/ (y_i + \epsilon)
+     \quad
+     z_i \equiv \frac{2 \, r_i }{r_i + 1/r_i}
+     \]
     \end{block}
-    \begin{block}{Sum Over Bins}
-      \begin{equation}
-        \color{brickred}
-        r_i \equiv (\hat{y_i} + \epsilon)/ (y_i + \epsilon)
-      \end{equation}
-      \vspace{-.9em}
-      \begin{equation}
-        \color{brickred}
-        z_i \equiv \frac{2 \, r_i }{r_i + 1/r_i}
-      \end{equation}
-      \vspace{-.4em}
-      \begin{equation}
-        \color{brickred}
-        \textrm{our cost} = \sum_{\textrm{bins}} {- \ln{z_i}}
-      \end{equation}
-      \vspace{-.7em}
-    \end{block}
-    \column{0.6\textwidth}
-      \centering
-      \includegraphics[width=1.0\linewidth]{images/CostPlot.png}
-      \end{columns}
+
+  \begin{columns}[c]
+    \column{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/AltCostPlot_181015.png}
+    \column{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/AltCostPlot_181015_linearA.png}
+    \column{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/AltCostPlot_181015_linear.png}
+    \end{columns}
 \end{frame}

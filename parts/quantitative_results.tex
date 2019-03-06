@@ -1,44 +1,34 @@
 \begin{frame}{Efficiencies and false positive rates}
 \begin{table}[]
 \centering
-\begin{tabular}{cccc}
-parameter & 2 CVN Layers &
-3 CVN Layers & 4 CVN Layers \\ [0.3em]
-
-$\epsilon \textrm{(Efficiency)}
- = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}} $
-&  $ \approx 58\% $  & $ \approx 70\% $ & $ \approx 75\% $ \\ [0.3em]
-$ \textrm{False Positive rate}
- = \frac{\mbox{FP}}{\mbox{number of events}} $
- &  $\approx 0.07 $ & $\approx 0.08 $  & $ \approx 0.13 $ \\
+\begin{tabular}{ccccc}
+    Layers (Conv. + FC Linear) & 3 + 1 & 4 + 1 & 4 + 1  & 5 + 0\\[.3em]
+    Sym or asym loss      & Sym          & Sym             & Asym & Asym     \\ [0.9em]
+    $ \epsilon \textrm{(Efficiency)} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}} $ &  $ \approx 80\% $  & $ \approx 82\% $ & $ \approx 92\% $ & $ \approx 93.6\% $ \\ [0.9em]
+    $ \textrm{FP rate} = \frac{\mbox{FP}}{\mbox{number of events}} $ &  $\approx 0.03  $  & $\approx 0.03  $ & $ \approx 0.18 $ & $ \approx 0.22\ (4\%) $ \\
  \end{tabular}
 \end{table}
- \vskip -0.05in
-  \begin{table}[]
-      \centering
-      \begin{tabular}{c|cc}
-         & Found & Not found \\ \midrule
-         Real PV & True positive & False negative\\
-         Not a real PV & False positive & True negative
-      \end{tabular}
-  \end{table}
-  \vskip -0.15in
-  \begin{block}{True Positive}
+
+  \begin{columns}
+      \column{.5\textwidth}
+  \begin{block}{True Positive (hand written algorithm)}
     \begin{itemize}
-    	\item search $ \pm 5 $ bins ($ \pm 500 \mu $m) around a real PV
-    	\item at least 3 (4) bins with predicted probability
+    	\item Search $ \pm 5 $ bins ($ \pm 500 \mu $m) around a true PV
+    	\item At least 3 (4) bins with predicted probability
     	   $ > 1\% $ and
     	   integrated probability $ > 20\%$.
     \end{itemize}
-
     \end{block}
+
+    \column{.5\textwidth}
     \begin{block}{False Positive}
     \begin{itemize}
         \item
-           at least 3 (4) bins with individual probabilities $ > 1\% $ and
+           At least 3-4 bins with probabilities $ > 1\% $ and
           integrated probability $ > 20\%$.
         \item
-        no real PV within $ \pm 5 $ bins ($ \pm 500 \mu $m) of that cluster.
+        No true PV within $ \pm 5 $ bins ($ \pm 500 \mu $m) of that cluster.
     \end{itemize}
   \end{block}
+\end{columns}
 \end{frame}

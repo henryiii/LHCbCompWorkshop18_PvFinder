@@ -1,31 +1,20 @@
 \begin{frame}{Cost function}
     \begin{block}{Approach}
       \begin{itemize}
-         \item
-            Should be similar to Cross-Entropy for $ y \to 0 $,
-           $ y \to 1 $;
-             $ \color{brickred} \textrm{cost} = - \left (y \ln \hat{y} + (1-y) \ln (1 - \hat{y}) \right )  $
-         \item
-          Should be symmetric with respect to  $ r = ( \hat y/y  )$ \& $ 1/r $
+         \item Symmetric cost function: low FP but low efficiency
+         \item Adding asymmetry term controls tradeoff for FP vs. efficiency
      \end{itemize}
-     \vspace{-.3cm}
-
-     \[
-     r_i \equiv (\hat{y_i} + \epsilon)/ (y_i + \epsilon)
-     \quad
-     z_i \equiv \frac{2 \, r_i }{r_i + 1/r_i}
-     \]
     \end{block}
 
   \begin{columns}[c]
     \column{0.33\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{images/AltCostPlot_181015.png}
+    \includegraphics[width=\textwidth, trim=20 0 20 0]{images/Asym_CostPlot_190302.png}
     \column{0.33\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{images/AltCostPlot_181015_linearA.png}
+    \includegraphics[width=\textwidth, trim=20 0 20 0]{images/Asym_CostPlot_190302_linear.png}
     \column{0.33\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{images/AltCostPlot_181015_linear.png}
+    \includegraphics[width=\textwidth, trim=20 0 20 0]{images/Asym_CostPlot_190302_linearA.png}
     \end{columns}
 \end{frame}

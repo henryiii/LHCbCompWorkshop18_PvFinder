@@ -1,7 +1,6 @@
 \begin{frame}{Conclusions and plans}
-
     \begin{tikzpicture}[overlay, remember picture]
-        \node at (current page.center) {\includegraphics[width=12cm]{images/effntracks_bg.pdf}};
+        \node at (current page.center) {\includegraphics[width=14.7cm]{images/effntracks_bg.pdf}};
     \end{tikzpicture}
 \begin{columns}
 \column{.25\textwidth}
@@ -10,29 +9,29 @@
 \vskip -1.75em
     \begin{itemize}
     \setlength\itemsep{0.25em}
-        \item [\textcolor{yellow}{\textbullet}] \color{yellow} 
+        \item [\textcolor{lhcbRed}{\textbullet}] \color{lhcbRed}
           Proof-of-Principle established:
-          \color{lhcbLightBlue}
+          \color{lhcbBlue}
           a hybrid ML algorithm using a 1-dimensional KDE processed by a 5-layer CNN finds primary vertices with efficiencies and false positive rates similar to traditional algorithms.
-        \item [\textcolor{yellow}{\textbullet}] \color{yellow} Efficiency is tunable; \color{lhcbLightBlue} increasing the efficiency also increases the false positive rate.
-        \item [\textcolor{yellow}{\textbullet}] \color{yellow} Adding information
+        \item [\textcolor{lhcbRed}{\textbullet}] \color{lhcbRed} Efficiency is tunable; \color{lhcbBlue} increasing the efficiency also increases the false positive rate.
+        \item [\textcolor{lhcbRed}{\textbullet}] \color{lhcbRed} Adding information
         should improve performance.
-        \color{lhcbLightBlue}
+        \color{lhcbBlue}
         \begin{itemize}
-            \item [\textcolor{lhcbLightBlue}
-            {\textbullet} \color{lhcbLightBlue}] \color{lhcbLightBlue}
+            \item [\textcolor{lhcbBlue}
+            {\textbullet} \color{lhcbBlue}] \color{lhcbBlue}
             can add KDE (x,y) information to algorithm
-            \item [\color{lhcbLightBlue}{\textbullet} \color{lhcbLightBlue}]
-            \color{lhcbLightBlue} can associate tracks to PV candidates, then iterate.
+            \item [\color{lhcbBlue}{\textbullet} \color{lhcbBlue}]
+            \color{lhcbBlue} can associate tracks to PV candidates, then iterate.
         \end{itemize}
-        \item [\textcolor{yellow}{\textbullet}] \color{yellow} Next steps:
-        \color{lhcbLightBlue}
+        \item [\textcolor{lhcbRed}{\textbullet}] \color{lhcbRed} Next steps:
+        \color{lhcbBlue}
         train with full LHCb MC and deploy inference engine in LHCb Hlt1 framework.
-        \item [\textcolor{yellow}{\textbullet}] \color{yellow} Beyond LHCb
+        \item [\textcolor{lhcbRed}{\textbullet}] \color{lhcbRed} Beyond LHCb
         \begin{itemize}
-            \item [\color{lhcbLightBlue} {\textbullet}] \color{lhcbLightBlue}
+            \item [\color{lhcbBlue} {\textbullet}] \color{lhcbBlue}
             approach might work for ATLAS and CMS;
-            \item [\color{lhcbLightBlue} {\textbullet}] \color{lhcbLightBlue} algorithm is an interesting ML laboratory.
+            \item [\color{lhcbBlue} {\textbullet}] \color{lhcbBlue} algorithm is an interesting ML laboratory.
         \end{itemize}
     \end{itemize}
 \column{.1\textwidth}

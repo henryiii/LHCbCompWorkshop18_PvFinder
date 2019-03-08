@@ -48,18 +48,22 @@
 
     	\begin{scope}[xshift=8cm]
     	    \path [belowbox] (-1.5,-1) rectangle (1.5,.45);
-    		\node [minibox] (mA) at (-1,-.3) {};
-    		\node [minibox] (mB) at (-.5,-.3) {};
-    		\node [minibox] (mC) at (0,-.3) {};
-    		\node [minibox] (mD) at (.5,-.3) {};
-    		\node [minibox] (mE) at (1,-.3) {};
-    		\draw [miniarr] (mA) -- (mB);
-    		\draw [miniarr] (mB) -- (mC);
-    		\draw [miniarr] (mC) -- (mD);
-    		\draw [miniarr] (mD) -- (mE);
+
+            \begin{scope}[yshift=3mm]
+        		\node [minibox] (mA) at (-1,-.3) {};
+        		\node [minibox] (mB) at (-.5,-.3) {};
+        		\node [minibox] (mC) at (0,-.3) {};
+        		\node [minibox] (mD) at (.5,-.3) {};
+        		\node [minibox] (mE) at (1,-.3) {};
+        		\draw [miniarr] (mA) -- (mB);
+        		\draw [miniarr] (mB) -- (mC);
+        		\draw [miniarr] (mC) -- (mD);
+        		\draw [miniarr] (mD) -- (mE);
+            \end{scope}
 
     		\path [topbox]  (-1.5,.45) rectangle (1.5,1);
-    	    \node at (0,1) [texttop] {CNN to find PVs};
+    	    \node at (0,1) [texttop] {Make predictions};
+            \node at (0,-.5) [lhcbBlue] {CNNs};
     	\end{scope}
 
     	\begin{scope}[xshift=12cm]

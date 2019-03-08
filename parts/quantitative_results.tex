@@ -1,33 +1,26 @@
 \begin{frame}{Efficiencies and false positive rates}
-\begin{table}[]
-\centering
-\begin{tabular}{ccccc}
-    Layers (Conv. + FC Linear) & 3 + 1 & 4 + 1 & 4 + 1  & 5 + 0\\[.3em]
-    Sym or asym loss      & Sym          & Sym             & Asym & Asym     \\ [0.9em]
-    $ \epsilon \textrm{(Efficiency)} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}} $ &  $ \approx 80\% $  & $ \approx 82\% $ & $ \approx 92\% $ & $ \approx 93.6\% $ \\ [0.9em]
-    $ \textrm{FP rate} = \frac{\mbox{FP}}{\mbox{number of events}} $ &  $\approx 0.03  $  & $\approx 0.03  $ & $ \approx 0.18 $ & $ \approx 0.22\ (4\%) $ \\
- \end{tabular}
-\end{table}
+\begin{columns}
+\column{.5\textwidth}
+\includegraphics[width=\textwidth]{images/EffVsFP.pdf}
+\column{.5\textwidth}
+\includegraphics[width=\textwidth]{images/EffVsFP_semilog.pdf}
+\end{columns}
 
   \begin{columns}
       \column{.5\textwidth}
-  \begin{block}{True Positive (hand written algorithm)}
+  \begin{block}{Search for PVs}
     \begin{itemize}
     	\item Search $ \pm 5 $ bins ($ \pm 500 \mu $m) around a true PV
-    	\item At least 3 (4) bins with predicted probability
+    	\item At least 3 bins with predicted probability
     	   $ > 1\% $ and
     	   integrated probability $ > 20\%$.
     \end{itemize}
     \end{block}
 
     \column{.5\textwidth}
-    \begin{block}{False Positive}
+    \begin{block}{Tunable efficiency vs. FP}
     \begin{itemize}
-        \item
-           At least 3-4 bins with probabilities $ > 1\% $ and
-          integrated probability $ > 20\%$.
-        \item
-        No true PV within $ \pm 5 $ bins ($ \pm 500 \mu $m) of that cluster.
+        \item The asymmetry parameter controls efficiency vs. FP
     \end{itemize}
   \end{block}
 \end{columns}

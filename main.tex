@@ -18,17 +18,16 @@
 
 \usetikzlibrary{decorations.pathreplacing}
 
-\definecolor{brickred}{rgb}{0.85, 0, 0.05}
 \errorcontextlines 10000
 
-\title[Hybrid DL approach to vertexing]{A hybrid deep learning approach to vertexing}
+\title[A hybrid DL approach to vertexing]{A hybrid deep learning approach to vertexing}
 
 \author[Fang, Schreiner, Sokoloff, Weisser, Williams]{
-   Rui Fang\textcolor{red}{\inst{1}} \and
-   Henry Schreiner\textcolor{red}{\inst{1, 2}} \and
-   Mike Sokoloff\textcolor{red}{\inst{1}} \and
-   Constantin Weisser\textcolor{red}{\inst{3}} \and
-   Mike Williams\textcolor{red}{\inst{3}}}
+   Rui Fang\textcolor{lhcbRed}{\inst{1}} \and
+   Henry Schreiner\textcolor{lhcbRed}{\inst{1, 2}} \and
+   Mike Sokoloff\textcolor{lhcbRed}{\inst{1}} \and
+   Constantin Weisser\textcolor{lhcbRed}{\inst{3}} \and
+   Mike Williams\textcolor{lhcbRed}{\inst{3}}}
 \institute{
     \inst{1} The University of Cincinnati \and
     \inst{2} Princeton University \and
@@ -48,8 +47,9 @@
     \titlepage
     \begin{tikzpicture}[overlay]
         \node [below] at (0.25, -1.9) {\color{lhcbLightBlue}ACAT 2019};
-        %\node [above] at (4.7, -1.9) {\includegraphics[width=2cm]{images/acatlogo.pdf}};
-        \node [above] at (6.9, -1.9) {\includegraphics[width=4cm]{images/iris-hep-t.png}};
+        \node at (8.3/2+5.5/2, -.2) {\color{lhcbBlue}Supported by:};
+        \node [above] at (5.5, -1.9) {\includegraphics[width=1.35cm]{images/NSF_4-Color_bitmap_Logo.png}};
+        \node [above] at (8.3, -1.9) {\includegraphics[width=2.5cm]{images/iris-hep-t.png}};
     \end{tikzpicture}
 \end{frame}
 
@@ -97,7 +97,7 @@
 \subsection{Prediction plots}
 \input{parts/prediction_plots.tex}
 
-\subsection{Quantitative results}
+\subsection{False Positive and efficiency rates}
 \input{parts/quantitative_results.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,6 +114,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \backupbegin
+
 \section{Backup}
 
 \subsection{More predictions with targets}

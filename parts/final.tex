@@ -1,19 +1,30 @@
 \begin{frame}{Final words}
 
-\vspace{1cm}
+\vspace{.5cm}
 \begin{center}
     \textcolor{lhcbBlue}{ \huge Questions?}
 \end{center}
 
-\vspace{1.5cm}
-\begin{columns}
-	\column{.65\textwidth}
-	\column{.35\textwidth}
+\vspace{1cm}
+\begin{columns}[t]
+	\column{.7\textwidth}
+    Source code:
+    \begin{itemize}
+        \item \url{https://gitlab.cern.ch/LHCb-Reco-Dev/pv-finder}
+        \item Runnable with Conda on macOS and Linux
+        \begin{itemize}
+            \item Run: \texttt{conda env create -f environment-gpu.yml}
+            \item Python 3.6+ and PyTorch used for machine learning code
+            \item Generation now available too using the new Conda-Forge ROOT and Pythia8 packages
+        \end{itemize}
+    \end{itemize}
+
+	\column{.3\textwidth}
 	Supported by:
 	\begin{itemize}
-		\item \href{https://www.nsf.gov/awardsearch/showAward?AWD_ID=1836650}{OAC-1836650: IRIS-HEP}
-		\item \href{https://www.nsf.gov/awardsearch/showAward?AWD_ID=1740102}{OAC-1740102: SI2:SSE}
-		\item \href{https://www.nsf.gov/awardsearch/showAward?AWD_ID=1739772}{OAC-1739772: SI2:SSE}
+		\item \href{https://www.nsf.gov/awardsearch/showAward?AWD_ID=1836650}{NSF OAC-1836650: IRIS-HEP}
+		\item \href{https://www.nsf.gov/awardsearch/showAward?AWD_ID=1740102}{NSF OAC-1740102: SI2:SSE}
+		\item \href{https://www.nsf.gov/awardsearch/showAward?AWD_ID=1739772}{NSF OAC-1739772: SI2:SSE}
 	\end{itemize}
 \end{columns}
 

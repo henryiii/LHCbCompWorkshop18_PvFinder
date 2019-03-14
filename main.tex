@@ -24,7 +24,7 @@
 % Darker links
 \definecolor{links}{RGB}{200,125,0}
 
-\title[A hybrid DL approach to vertexing]{A hybrid deep learning approach to vertexing}
+\title[ML for PV reconstruction]{Machine Learning for Primary Vertex reconstruction}
 
 \author[Fang, Schreiner, Sokoloff, Weisser, Williams]{
    Rui Fang\textcolor{lhcbRed}{\inst{1}} \and
@@ -37,10 +37,10 @@
     \inst{2} Princeton University \and
     \inst{3} Massachusetts Institute of Technology
 }
-\date{March 11, 2019}
+\date{March 20, 2019}
 
-\renewcommand{\logomax}{\node [right] at (.25,1.9) {\includegraphics[height=1.8cm]{images/acatlogo.pdf}};}
-\renewcommand{\logomini}{\node at (.5,.4) {\includegraphics[height=.75cm]{images/acatlogo.pdf}};}
+\renewcommand{\logomax}{\node [right] at (.25,1.9) {};}
+\renewcommand{\logomini}{\node at (.5,.4) {};}
 
 %% added 190307 mds
 \usepackage{setspace}
@@ -50,7 +50,7 @@
 \begin{frame}
     \titlepage
     \begin{tikzpicture}[overlay]
-        \node [below] at (0.25, -1.9) {\color{lhcbLightBlue}ACAT 2019};
+        \node [below] at (0.25, -1.9) {\color{lhcbLightBlue}HOW 2019};
         \node at (8.3/2+5.5/2, -.2) {\color{lhcbBlue}Supported by:};
         \node [above] at (5.5, -1.9) {\includegraphics[width=1.35cm]{images/NSF_4-Color_bitmap_Logo.png}};
         \node [above] at (8.3, -1.9) {\includegraphics[width=2.5cm]{images/iris-hep-t.png}};
@@ -98,11 +98,11 @@
 
 \section{Results}
 
-\subsection{Prediction plots}
-\input{parts/prediction_plots.tex}
-
 \subsection{False Positive and efficiency rates}
 \input{parts/quantitative_results.tex}
+
+\subsection{Prediction plots}
+\input{parts/prediction_plots.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

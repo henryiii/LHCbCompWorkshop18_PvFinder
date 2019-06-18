@@ -16,7 +16,7 @@
 \author{
    Rui Fang\textsuperscript{1},
    Henry F Schreiner\textsuperscript{1,2},
-   Mike D Sokoloff\textsuperscript{1},
+   Michael D Sokoloff\textsuperscript{1},
    Constantin Weisser\textsuperscript{3} and
    Mike Williams\textsuperscript{3}
 }
@@ -57,27 +57,27 @@ An alternate method is proposed here for finding vertices from tracks or hits us
 	\label{fig:approach}
 \end{figure}
 
-A toy simulation of the LHCb detector has been developed to test this algorithm. The design of the algorithm and the toy that is was tested with follows.
+A toy simulation of the LHCb detector has been developed to test this algorithm. The design of the algorithm and the toy that it was tested with follows.
 
 \section{Kernel Generation}
 
-Our toy simulation generates tracks from PVs and SVs, and we using a simple intersection procedure to produces hits in the Vertex Locater (VELO) according to a simple model of the upgrade detector \cite{Collaboration:1624070}. Pythia creates primary and secondary vertices in the beam interaction region. The particles it produces are then propogated through the detector, with interactions being recorded as hits in the 26 detection planes in the lower and upper halves of the VELO. Scattering in the detector and foil are also implemented.
+Our toy simulation generates tracks from PVs and SVs, and we use a propagation and intersection procedure to produce hits in the Vertex Locater (VELO) according to a simple model of the upgrade detector \cite{Collaboration:1624070}. Pythia creates primary and secondary vertices in the beam interaction region. The particles it produces are then propogated through the detector, with interactions being recorded as hits in the 26 detection planes in the lower and upper halves of the VELO. Scattering in the detector and the foil shielding the VELO from the RF interference produced by the pulsed beam <REF> are also implemented.
 
-The algorithm presented here applies to tracks, but our simulation produces raw hits, so a simple and inaccurate procedure is applied; this should be sufficient, since our algorithm is resilient to small tracking errors. We call this system ``prototracking'', and it was originally planned to be primary driver for the kernel generation to provide PV canidates as early as possible in the tracking procedure. Due to recent advancements in the tracking code, the full tracks will be available early in the trigger system, so the prototracking system will not be needed in the future. For the prototracking, the hits are radially sorted, and then formed into triplets, with a $\chi^2 < 10$ test for validity. Once a triplet is found, all hits that can be added to the track with $\chi^2<9$ are removed from further searches. This list is built and sent to the kernel.
+The algorithm presented here applies to tracks, but our simulation produces raw hits, so a simple and somewhat inaccurate procedure is applied; this should be sufficient, since our algorithm is resilient to small tracking errors. We call this system ``prototracking'', and it was originally planned to be primary driver for the kernel generation to provide PV canidates as early as possible in the tracking procedure. Due to recent advances in the tracking code, the full tracks will be available early in the trigger system, so the prototracking system will not be needed in the future. For the prototracking, the hits are radially sorted, and then formed into triplets, with a $\chi^2 < 10$ test for validity. Once a triplet is found, all hits that can be added to the track with $\chi^2<9$ are removed from further searches. This list is built and sent to the kernel.
 
-In order to provide a simple, dense representation for the machine learning algorithm to use, the tracks are transformed into a dense representation using a ``kernel'' procedure. For any point in space, the value of the kernel can be computed as 
-
+To provide a simple, dense representation for the machine learning algorithm to use, the tracks are transformed using a ``kernel'' procedure. For any point in space, the value of the kernel can be computed as 
+%
 \begin{equation}
-\rho \equiv  \frac{ \sum  p^2}{\sum  p} - \sum p
+\rho \equiv  \frac{ \sum  p^2}{\sum  p} - \sum p,
 \end{equation}
-
+%
 where $p$ is Gaussian function in terms of distance to the impact parameter (IP) in x and y of a track, and is summed over all tracks.
 In the future, a full covariant matrix will be used, but for now, a constant value for the Gaussian width of 0.05 is used, unless $\chi^2>6$, in which case $ (\chi^2-2)\frac{0.05}{4} $ is added to the width.
 The final Gaussian is just the product of the Gaussians in $ \mathrm{IP} \cdot \hat{x}$ and $ \mathrm{IP} \cdot \hat{y}$.
 
-A series of 4,000 regularly spaced planes along the $z$-axis (beamline) cover the active area of the VELO. Each plane is divided into a course 8 by 8 grid, and the kernel value is computed in the center of each bin. Once this is done, a standard minimization algorithm is used to find the maximum point starting from the center of the bin that reported the highest value; see Figure \ref{fig:kernel}. This maximum kernel value is recorded as the value for this plane in $z$, and the procedure is repeated for all 4000 planes.
+A series of 4,000 regularly spaced planes along the $z$-axis (beamline) cover the active area of the VELO in $\unit[100]{\mu m}$ increments. Each plane is divided into a course 8 by 8 grid, and the kernel value is computed in the center of each bin. Once this is done, a standard minimization algorithm is used to find the maximum point starting from the center of the bin that reported the highest value; see Figure \ref{fig:kernel}. This maximum kernel value is recorded as the value for this plane in $z$, and the procedure is repeated for all 4000 planes.
 
-Finally, the target for the training is generated from the simulated truth information. Each PV is represented by a normalized Gaussian with a fixed width of $\unit[100]{\mu m}$. These values are recorded into a 4000 bins matching the distribution of the kernel in z. This series of Gaussian pulses represents the probability of a bin containing a PV.  % TODO: Mention variable width in plans
+Finally, the target for the training is generated from the simulated truth information. Each PV is represented by a normalized Gaussian with a fixed width of $\unit[100]{\mu m}$. These values are recorded into 4000 bins matching the distribution of the kernel in z. This series of Gaussian pulses represents the probability of a bin containing a PV.  % TODO: Mention variable width in plans
 PVs with at least 5 detectable tracks within the LHCb detector acceptance are called LHCb PVs.
 
 \begin{figure}
@@ -98,9 +98,11 @@ PVs with at least 5 detectable tracks within the LHCb detector acceptance are ca
 
 The network was designed primarily using convolutional layers. The most successful network to date is shown in Figure \ref{fig:nnarch}. The widths of each convolution were chosen based on visual inspection of the data; the number of channels were increased until benefits were no longer noticeable upon adding new channels. The activation function in-between each hidden layer is a leaky ReLU.
 
+symmetric with respect to fractionally underestimating or overestimating the target values where the target values in bins with KDE = 0 are reset to $ \epsilon = 10^{-5} $ to create a mathematically tractable problem.  Ignoring the singularity when the target value is exactly zero, the initial loss function was designed to be symmetric with to
+
 The final activation layer was initially a Sigmoid, since this can only produce values between 0 and 1, much like one would expect for a probability. However, this produced poorly shaped final probability distributions, with a distinctly square shape capped near 1, rather than Gaussian, and regularly over-estimated the probability. After changing to the Softplus function, the output probability distributions were much closer to the target. The flat derivative of the Sigmoid for large values is likely to blame for the inability of the network to correct a value that is too large.
 
-The loss function was originally designed to be symmetric, that is, to ``punish'' the network for adding a probability where there was a zero in the target in exactly amount as not adding a probability when there was one in the target. This should be symmetric with respect to  $r \equiv \frac{\hat y}{y}$ and $r^{-1}$, where $y$ is the predicted value and $\hat y$ is the target value. It should be similar to cross entropy, which is commonly defined as
+The loss function was originally designed to be symmetric with respect to fractionally underestimating or overestimating the target values where the target values in bins with KDE = 0 are reset to $ \epsilon = 10^{-5} $ to create a mathematically tractable problem.  Ignoring the singularity when the target value is exactly zero, the initial loss function was designed to be symmetric with respect to  $r \equiv \frac{\hat y}{y}$ and $r^{-1}$, where $y$ is the predicted value and $\hat y$ is the target value. This is similar to cross entropy, which is commonly defined as
 %
 $
 \mathrm{cost} = - \left(
@@ -115,7 +117,7 @@ z_i & \equiv & \frac{2 r_i}{r_i + r_i^{-1}}, \\
 \mathrm{cost}  & \equiv &- \sum_\mathrm{bins} \ln z_i.
 \end{eqnarray}
 %
-The extra parameter here, $\epsilon$, is just a small parameter for stability that controls the scale of 0 in this cost.
+The parameter $ \epsilon $ is tunable; it should be $ \ll 0.01 $ to avoid confusion between bins wtih KDE = 0 and bins with finite predictions for KDE.
 
 This loss function was found to highly favor minimal false positives (FP) at the expense of efficiency. A single asymmetry parameter was added to control the cost function, and provides a powerful control for selecting the FP to efficiency tradeoff. This loss function can be constructed from the other one with an asymmetry term $a$ and then
 \begin{equation}
@@ -134,16 +136,22 @@ Figure \ref{fig:loss} shows the response for several cost functions, in both sym
 	\label{fig:loss}
 \end{figure}
 
-One of the most important additions to the original network was ``masking''. Some PVs do not pass our criterion for a good, detectable LHCb PV due to a lack of detectable tracks. These PVs were given a masked region roughly equal to the width of the PV Gaussian probability in the target kernel, and the cost function skips these regions. This keeps the training from punishing or rewarding discovery in these regions. All further calculations, such as efficiency, also ignore these masked regions.
+One of the most important additions to the original network was ``masking''. Some PVs do not pass our criterion for a good, detectable LHCb PV due to a lack of a sufficiently large number of detectable tracks. These PVs were given a masked region roughly equal to the width of the PV Gaussian probability in the target kernel, and the cost function skips these regions. This keeps the training from punishing or rewarding discovery in these regions. All further calculations, such as integrated efficiency, also ignore these masked regions.
 
 \section{Results}
 
-Our current results are shown in Figure \ref{fig:results}. This shows an efficiency of 88\% for the symmetric cost function, and almost 94\% for asymmetric cost function. Above 20 long LHCb tracks, there is nearly 100\% efficiency. False positive rates here are reported per-event.
+Our current results are shown in Figure \ref{fig:results}. This shows an integrated efficiency of 88\% for the symmetric cost function, and almost 94\% for a highly asymmetric cost function. Above 20 long LHCb tracks, there is nearly 100\% efficiency. False positive rates here are reported per-event.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{images/effntrackspaper.pdf}
-	\caption{Results from training a network with a symmetric and an asymmetric cost function (with $a=5$). The upper curve was trained the asymmetric cost function. The lower plot is a histogram of the number of PVs over the number tracks within the LHCb acceptance. Log scale shown on the right, where the points are almost linear.}
+	\caption{
+		(Top plot) Results from training a network with a symmetric and an asymmetric cost function (with $a=5$).
+		%
+		The lighter shaded region was trained the asymmetric cost function. The darker shaded region was trained with the asymmetric cost function.
+		%
+		(Bottom plot) This histogram shows the distribution of PVs with the indicated number of tracks within the LHCb forward acceptance.
+	}
     \label{fig:results}
 \end{figure}
 
@@ -152,7 +160,7 @@ In Figure \ref{fig:efffp}, several different values of $a$ were used in training
 \begin{figure}
 	\centering
 	\includegraphics[width=.8\textwidth]{images/EffVsFP2paper.pdf}
-	\caption{False positive rate vs. efficiency for several values of asymmetry term $a$.}
+	\caption{False positive rate vs. efficiency for several values of asymmetry term $a$. Log scale shown on the right, where the points are almost linear.}
 	\label{fig:efffp}
 \end{figure}
 
@@ -160,11 +168,11 @@ In Figure \ref{fig:efffp}, several different values of $a$ were used in training
 
 While the initial study has been effective and has shown exciting results, there are several planned improvements.
 
-We are storing the point in $x$ and $y$ where the maximum occurred. This information could be included in the network to give the model more to learn from. The current problem with this is that the network overestimates the importance of these values compared to $z$ and stalls. This information could also be used to predict all three coordinates of the PV instead of just $z$; early studies on this have been promising.
+We are storing the point in $x$ and $y$ where the maximum occurred. This information can be included in the network to give the model more to learn from. The current problem with this is that the network overestimates the importance of these values compared to $z$ and stalls. This information could also be used to predict all three coordinates of the PV instead of just $z$; early studies on this have been promising. We plan to associate individual tracks with candidate PVs  probabilistically in a second step, and then combine the information to reduce the false positive rate and identify secondary tracks and secondary vertex candidates, again probabilistically.
 
 This work has been focused so far on a 1D kernel; however, a 2D kernel is also a possibility. 1D looks to be sufficient for the upgrade conditions for LHCb, but other detectors or much higher pileup could create higher congestion in the 1D kernel which should be dramatically reduced in 2D. The kernel would be binned in one more coordinate, such as $x$ or $y$.
 
-The next project will be to split the prototracking out from the kernel generation in our software, to allow the tracks to be input from the official LHCb simulation. There is work ongoing to do this, as well as to implement the inference engine in the LHCb trigger system.
+The next project will be to split the prototracking out from the kernel generation in our software, to allow the tracks to be input from the official LHCb simulation. There is work ongoing to do this, as well as to implement the inference engine in the LHCb software stack.
 
 \section*{References}
 

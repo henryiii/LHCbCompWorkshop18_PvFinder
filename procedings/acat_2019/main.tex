@@ -45,9 +45,7 @@ We use a custom kernel to transform the sparse 3D space of hits and tracks into 
 
 The LHCb detector is facing a major upgrade in luminosity in Run 3 in 2021. In each event, the Poisson average expected for the visible Primary Vertices (PVs) will go from 1.1 to 5.6. In addition, the hardware level-0 trigger is being removed in favor of a purely software trigger running at 30 MHz \cite{CERN-LHCC-2014-016}. Work is ongoing to find new algorithms to support the upgrade era software for LHCb.
 
-The current algorithm for finding vertices is <REF NEEDED>.
-
-An alternate method is proposed here for finding vertices from tracks or hits using machine learning techniques (see Figure \ref{fig:approach}). The algorithm starts with tracks containing location, direction, and covariance matrix information. The tracks in 3D space are converted to a 1D binned ``kernel'' through a process described below. Peaks in this kernel are closely related to the z positions of the primary verticies. We use a series of 1D convolutional layers to predict the PV locations from this kernel. The output probabilities from the neural network are converted to a list of PV candidate z-locations using a simple peak finding algorithm. Using this procedure we have surpassed 90\% efficency with less than 0.2 False Positives (FPs) per event.
+A new method is proposed here for finding vertices from tracks or hits using machine learning techniques (see Figure \ref{fig:approach}). The algorithm starts with tracks containing location, direction, and covariance matrix information. The tracks in 3D space are converted to a 1D binned ``kernel'' through a process described below. Peaks in this kernel are closely related to the z positions of the primary verticies. We use a series of 1D convolutional layers to predict the PV locations from this kernel. The output probabilities from the neural network are converted to a list of PV candidate z-locations using a simple peak finding algorithm. Using this procedure we have surpassed 90\% efficency with less than 0.2 False Positives (FPs) per event.
 
 
 \begin{figure}
@@ -166,7 +164,7 @@ In Figure \ref{fig:efffp}, several different values of $a$ were used in training
 
 \section{Plans}
 
-While the initial study has been effective and has shown exciting results, there are several planned improvements.
+While the initial study has been effective and has shown exciting results, there are several planned improvements. The width of each PV probability in the target distribution is currently fixed to $\unit[100]{\mu m}$; however, we could instead have a variable width based on the tracks in the PV, and study the network's ability to learn this information.
 
 We are storing the point in $x$ and $y$ where the maximum occurred. This information can be included in the network to give the model more to learn from. The current problem with this is that the network overestimates the importance of these values compared to $z$ and stalls. This information could also be used to predict all three coordinates of the PV instead of just $z$; early studies on this have been promising. We plan to associate individual tracks with candidate PVs  probabilistically in a second step, and then combine the information to reduce the false positive rate and identify secondary tracks and secondary vertex candidates, again probabilistically.
 

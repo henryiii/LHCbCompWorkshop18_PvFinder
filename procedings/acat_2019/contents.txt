@@ -1,0 +1,12 @@
+main.bbl
+approach.tex
+iopams.sty
+jpconf.cls
+jpconf11.clo
+kernel.tex
+main.tex
+name.eps
+nnarch.tex
+images/EffVsFP2paper.pdf
+images/LossPaper.pdf
+images/effntrackspaper.pdf

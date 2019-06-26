@@ -2,10 +2,8 @@ approach.tex
 images/EffVsFP2paper.pdf
 images/LossPaper.pdf
 images/effntrackspaper.pdf
-iopams.sty
-jpconf.cls
-jpconf11.clo
 kernel.tex
-main.bbl
-main.tex
+eprint.bbl
+eprint.tex
 nnarch.tex
+econfmacros.tex

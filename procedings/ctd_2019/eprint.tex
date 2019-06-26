@@ -125,8 +125,7 @@ Mike Williams\textsuperscript{3}
 \vfill
 
 \begin{Abstract}
-In the transition to Run 3 in 2021, LHCb will undergo a major luminosity upgrade, going from 1.1 to 5.6 expected visible Primary Vertices (PVs) per event, and will adopt a purely software trigger. This has fueled increased interest in alternative highly-parallel and GPU friendly algorithms for tracking and reconstruction. We will present a novel prototype algorithm for vertexing in the LHCb upgrade conditions.
-We use a custom kernel to transform the sparse 3D space of hits and tracks into a dense 1D dataset, and then apply Deep Learning techniques to find PV locations. By training networks on our kernels using several Convolutional Neural Network layers, we have achieved better than 90\% efficiency with no more than 0.2 False Positives (FPs) per event. Beyond its physics performance, this algorithm also provides a rich collection of possibilities for visualization and study of 1D convolutional networks. We will discuss the design, performance, and future potential areas of improvement and study, such as possible ways to recover the full 3D vertex information.
+In the transition to Run 3 in 2021, LHCb will undergo a major luminosity upgrade, going from 1.1 to 5.6 expected visible Primary Vertices (PVs) per event, and will adopt a purely software trigger. This has fueled increased interest in alternative highly-parallel and GPU friendly algorithms for tracking and reconstruction. We will present a novel prototype algorithm for vertexing in the LHCb upgrade conditions. We use a custom kernel to transform the sparse 3D space of hits and tracks into a dense 1D dataset, and then apply Deep Learning techniques to find PV locations. By training networks on our kernels using several Convolutional Neural Network layers, we have achieved better than 90\% efficiency with no more than 0.2 False Positives (FPs) per event. Beyond its physics performance, this algorithm also provides a rich collection of possibilities for visualization and study of 1D convolutional networks. We will discuss the design, performance, and future potential areas of improvement and study, such as possible ways to recover the full 3D vertex information.
 \end{Abstract}
 
 \vfill
@@ -242,11 +241,6 @@ Figure~\ref{fig:loss} shows the response for several cost functions, in both sym
 	\label{fig:loss}
 \end{figure}
 
-One of the most important additions to the original network was ``masking''. Some PVs do not pass our criterion for a good, detectable LHCb PV due to a lack of a sufficiently large number of detectable tracks. These PVs were given a masked region roughly equal to the width of the PV Gaussian probability in the target kernel, and the cost function skips these regions. This keeps the training from punishing or rewarding discovery in these regions. All further calculations, such as integrated efficiency, also ignore these masked regions.
-
-\section{Results}
-
-Our current results are shown in Figure~\ref{fig:results}. This shows an integrated efficiency of 88\% for the symmetric cost function, and almost 94\% for a highly asymmetric cost function. Above 20 long LHCb tracks, there is nearly 100\% efficiency. False positive rates here are reported per-event.
 
 \begin{figure}[!htb]
 	\centering
@@ -261,7 +255,18 @@ Our current results are shown in Figure~\ref{fig:results}. This shows an integra
 	\label{fig:results}
 \end{figure}
 
+One of the most important additions to the original network was ``masking''. Some PVs do not pass our criterion for a good, detectable LHCb PV due to a lack of a sufficiently large number of detectable tracks. These PVs were given a masked region roughly equal to the width of the PV Gaussian probability in the target kernel, and the cost function skips these regions. This keeps the training from punishing or rewarding discovery in these regions. All further calculations, such as integrated efficiency, also ignore these masked regions.
+
+\section{Results}
+
+
+
+Our current results are shown in Figure~\ref{fig:results}. This shows an integrated efficiency of 88\% for the symmetric cost function, and almost 94\% for a highly asymmetric cost function. Above 20 long LHCb tracks, there is nearly 100\% efficiency. False positive rates here are reported per-event.
+
+
+
 In Figure~\ref{fig:efffp}, several different values of $a$ were used in training, up to $a=5.0$, as well as a symmetric training (equivalent to $a=0$). This shows the asymmetry parameter can be used as a tuning parameter to control this trade-off between efficiency and false positive rate.
+
 
 \begin{figure}[!htb]
 	\centering

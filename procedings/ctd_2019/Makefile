@@ -3,9 +3,7 @@
 # -----------------------------------------
 TEXFILE = eprint
 
-TEX=latex
-DVIPS=dvips
-PS2PDF=ps2pdf
+TEX=pdflatex
 BIBTEX=bibtex
 
 SOURCES         = $(wildcard ./*.tex)
@@ -14,16 +12,10 @@ EPSFIGURES      = $(wildcard figures/*.eps)
 
 all: ${TEXFILE}.pdf
 
-${TEXFILE}.pdf: ${TEXFILE}.ps
-	$(PS2PDF) -sPAPERSIZE=a4 ${TEXFILE}.ps
-
-${TEXFILE}.ps: ${TEXFILE}.dvi
-	$(DVIPS) -ta4 ${TEXFILE}.dvi -o ${TEXFILE}.ps
-
 ${TEXFILE}.bbl: ${TEXFILE}.bib
 	$(BIBTEX) ${TEXFILE}
 
-${TEXFILE}.dvi: ${SOURCES} ${EPSFIGURES} ${BIBFILE}
+${TEXFILE}.pdf: ${SOURCES} ${EPSFIGURES} ${BIBFILE}
 	$(TEX) ${TEXFILE}.tex
 	$(TEX) ${TEXFILE}.tex && $(TEX) ${TEXFILE}.tex 
 
